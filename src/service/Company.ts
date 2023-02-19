@@ -1,12 +1,9 @@
 import { Employee } from "../model/Employee";
- 
 export class Company {
  constructor(private employees: Employee[]){
-   
  }
     addEmployee(empl:Employee):void{
         this.employees.push(empl);
-
     }
     updateEmployee(empl:Employee):void{
         const emplUpdated= this.getEmployee(empl.id);

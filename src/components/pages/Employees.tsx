@@ -6,7 +6,6 @@ import {DataGrid, GridActionsCellItem, GridColumns} from '@mui/x-data-grid';
 import {Delete} from '@mui/icons-material';
 import './table.css';
 import { employeesActions } from '../../redux/employees-slice';
-
 export const Employees: React.FC = () => {
     const dispath = useDispatch();
     const columns=React.useRef<GridColumns>([
@@ -25,7 +24,6 @@ export const Employees: React.FC = () => {
                      dispath(employeesActions.removeEmployee(+params.id))}/>
             ]
         }}
-
     ])
     const employees = useSelector<any, Employee[]>(state => state.company.employees);
     return <Box sx={{height: "80vh", width: "80vw"}}>
