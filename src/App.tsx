@@ -24,7 +24,7 @@ function App() {
         }
         else{
             if(auth.includes("admin")){
-                sRoutes=layoutConfig.routes.filter(r =>!r.label.includes('Login'));
+                Routes=layoutConfig.routes.filter(r =>!r.label.includes('Login'));
                 sRoutes =sRoutes.filter(r => !r.label.includes('Add Employees'));
             }
             sRoutes[sRoutes.findIndex(r =>r.path.includes('/logout'))].label=auth;
