@@ -10,8 +10,7 @@ const employeesSlice = createSlice({
     name: "company",
     reducers: {
         addEmployee: (state, data) => {
-            //state.employees = state.employees.slice();
-            company.addEmployee(data.payload);
+           company.addEmployee(data.payload);
             state.employees = company.getAllEmployees();
         },
         removeEmployee: (state, data) => {
