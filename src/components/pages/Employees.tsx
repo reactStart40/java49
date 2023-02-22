@@ -30,7 +30,7 @@ const authUser = useSelector<any, string>(state => state.auth.authenticated);
                            const empl = employees.find(e => e.id == +params.id)
                            if (empl) {
                             const factor = empl.salary > 20000 ? 0.8 : 1.2
-                             let emplCopy = {...empl, salary: empl.salary * factor};
+                            const emplCopy = {...empl, salary: empl.salary * factor};
                                 dispatch(employeesActions.updateEmployee(emplCopy))
                            }
                            
