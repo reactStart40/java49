@@ -5,9 +5,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.9",
-    "@mui/x-data-grid": "^5.17.24",
+    "@mui/x-data-grid": "^5.17.23",
     "@reduxjs/toolkit": "^1.9.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
