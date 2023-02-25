@@ -4,7 +4,7 @@ import employeeConfig from "../config/employee-config.json";
 export function createRandomEmployee(): Employee {
     const {minId, maxId, departments,
          minBirthYear, maxBirthYear, minSalary, maxSalary} = employeeConfig;
-    const id = getRandomNumber(minId, maxId,true, true);
+         const id = 0;
     const name = "name" + id.toString().slice(0,3);
     const department = getElement(departments);
     const birthDate = getRandomDate(minBirthYear, maxBirthYear).toISOString()

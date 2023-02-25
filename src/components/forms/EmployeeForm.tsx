@@ -4,6 +4,8 @@ import employeeConfig from '../../config/employee-config.json';
 import { Employee } from "../../model/Employee";
 import { initializeConnect } from "react-redux/es/components/connect";
 
+
+
 type Props = {
     submitFn: (empl: Employee) => boolean,
     employeeUpdate?: Employee
