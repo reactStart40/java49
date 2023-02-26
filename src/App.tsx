@@ -13,7 +13,6 @@ import { RouteType } from './model/RouteType';
 import { useSelector } from 'react-redux';
 import { Login } from './components/pages/Login';
 import { Logout } from './components/pages/Logout';
-import { GenerationForm } from './components/forms/GenerationForm';
 import { Generation } from './components/pages/Generation';
 
 
@@ -22,11 +21,12 @@ function App() {
     const authUser:string = useSelector<any,string>(state=>state.auth.authenticated );
     useEffect(()=> {
         function getRoutes(): RouteType[] {
-            const logoutRoute: RouteType|undefined= layoutConfig.routes.find(r=>r.path.includes ('logout'))
-            logoutRoute!.label= authUser
+            const logoutRoute: RouteType |undefined = layoutConfig.routes
+            .find(r => r.path.includes('logout'))
+            logoutRoute!.label = authUser;
             return layoutConfig.routes.filter(r => (!authUser && !r.flAuth) ||
             (authUser.includes('admin') && r.flAdmin) ||
-            (!!authUser && r.flAuth && !r.flAdmin))
+            (authUser && r.flAuth && !r.flAdmin))
         }
         setRoutes(getRoutes());
     }, [authUser])
@@ -38,9 +38,9 @@ function App() {
               <Route path='add' element={<AddEmployee/>}/>
               <Route path='statistics/age' element={<AgeStatistics/>}/>
               <Route path='statistics/salary' element={<SalaryStatistics/>}/>
-              <Route path='/generation' element={<Generation/>}/>
               <Route path='login' element={<Login/>}/>
               <Route path='logout' element={<Logout/>}/>
+              <Route path='generation' element={<Generation/>}/>
               
           </Route>
               

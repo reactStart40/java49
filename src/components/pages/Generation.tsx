@@ -1,36 +1,42 @@
 import React from "react";
-import './table.css'
-import { GenerationForm } from "../forms/GenerationForm";
-import { createRandomEmployee } from "../../service/EmployeesService";
-import { Alert, Box, Stack } from '@mui/material';
+import {Box, TextField, Button, Alert} from '@mui/material';
 import {useDispatch} from 'react-redux';
-import { employeesActions } from '../../redux/employees-slice';
-
-
+import generationConfig from '../../config/generation-config.json';
+import { employeesActions } from "../../redux/employees-slice";
+import { createRandomEmployee } from "../../service/EmployeesService";
 export const Generation: React.FC = () => {
-    const [count, setCount] = React.useState<number>(0);
-    const [alert, setAlert] = React.useState<boolean>(false);
     const dispatch = useDispatch();
+    const {defaultAmount, minAmount, maxAmount, alertTimeout} = generationConfig;
+    const [amount, setAmount] = React.useState<number>(defaultAmount);
+    const [flAlertSuccess, setAlertAccess] = React.useState<boolean>(false);
+    function handlerAmount(event: any): void {
+        setAmount(+event.target.value);
+    }
+    function onSubmitFn(event: any) {
+        event.preventDefault();
+        for(let i = 0; i < amount; i++) {
+            dispatch(employeesActions.addEmployee(createRandomEmployee()));
+        }
+        setAlertAccess(true);
+        setTimeout(() => setAlertAccess(false),alertTimeout );
+    }
+    
+
 
     return <Box>
-        {!alert && 
-            <GenerationForm  submitFn={(num) => {
-                for(let i=0; i<num; i++) {
-                    dispatch(employeesActions.addEmployee(createRandomEmployee()));
-                }
-                setCount(num);
-                setAlert(true);
-                setTimeout( () => setAlert(false), 4000);
-                return true;
-            }
-            }/>
-        }
-        { alert && 
-            <Stack sx={{ width: '100%' }} spacing={2}>
-              <Alert variant="filled" severity="success">
-                This is a success alert — {count} records are created
-              </Alert>
-            </Stack>
-        }
+        <form onSubmit={onSubmitFn} >
+            <TextField label="amount of employee generated" fullWidth required 
+            type="number" onChange={handlerAmount}
+             value={amount}
+              helperText={`enter amount of employee objects in range [${minAmount}-${maxAmount}]`}
+              inputProps = {{
+                min: `${minAmount}`,
+                max: `${maxAmount}`
+              }} />
+              <Button type="submit">Generate</Button>
+
+        </form>
+        {flAlertSuccess && <Alert severity="success">Generated {amount} random employee objects</Alert>}
+         
     </Box>
 }
