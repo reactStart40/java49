@@ -1,13 +1,15 @@
 import { NavigatorProps } from "../model/NavigatorProps";
 export const layoutConfig: NavigatorProps = {
-    className: 'navigator-list',
     routes: [
-        { label: 'Employees', path: '/', flAdmin: false, flAuth: false},
-        { label: 'Add Employees', path: '/add', flAdmin: false, flAuth: false},
-        { label: 'Age Statistics', path: '/statistics/age', flAdmin: false, flAuth: false},
-        { label: 'Salary Statistics', path: '/statistics/salary', flAdmin: false, flAuth: false},
-        { label: 'Login', path: '/login', flAdmin: false, flAuth: false},
-        { label: 'Logout', path: '/ logout', flAdmin: false, flAuth:false}
+        { label: 'Employees', path: '/', flAuth: true },
+        { label: 'Add Employees', path: '/add', flAuth: true, flAdmin: true},
+        { label: 'Generation', path: '/generation', flAuth: true, flAdmin: true},
+        { label: 'Age Statistics', path: '/statistics/age' ,
+         flAuth: true, flAdmin: false},
+        { label: 'Salary Statistics', path: '/statistics/salary',
+         flAuth: true, flAdmin: false },
+         {label: 'Logout', path: '/logout', flAuth: true},
+         {label: 'Login', path: '/login', flAuth: false}
 
     ]
 }

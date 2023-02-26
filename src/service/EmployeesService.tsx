@@ -10,7 +10,7 @@ export function createRandomEmployee(): Employee {
     const birthDate = getRandomDate(minBirthYear, maxBirthYear).toISOString()
     .slice(0, 10);
     const salary = getRandomNumber(minSalary, maxSalary);
-    const employee: Employee = {id, name, department,
+    const employee: Employee = {id:0, name, department,
          birthDate, salary}
     return employee;
 }

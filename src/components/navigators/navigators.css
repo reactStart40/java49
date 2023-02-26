@@ -5,12 +5,14 @@
     width: 80vw;
     list-style: none;
 }
+
 .navigator-list-submenu {
     display: flex;
     flex-direction: column;
-    list-style: none
+    list-style: none;
 }
-@media(min-width: 560px) {
+
+@media (min-width: 560px) {
     .navigator-list {
         flex-direction: row;
     }
