@@ -24,6 +24,7 @@ export const Generation: React.FC = () => {
 
 
     return <Box>
+        
         <form onSubmit={onSubmitFn} >
             <TextField label="amount of employee generated" fullWidth required 
             type="number" onChange={handlerAmount}
