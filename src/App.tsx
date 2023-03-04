@@ -8,13 +8,13 @@ import { AddEmployee } from './components/pages/AddEmployee';
 import { AgeStatistics } from './components/pages/AgeStatistics';
 import { SalaryStatistics } from './components/pages/SalaryStatistics';
 import { useEffect, useState } from 'react';
-import { NavigatorProps } from './model/NavigatorProps';
+
 import { RouteType } from './model/RouteType';
 import { useSelector } from 'react-redux';
 import { Login } from './components/pages/Login';
 import { Logout } from './components/pages/Logout';
 import { Generation } from './components/pages/Generation';
-
+import { NavigatorDispatch } from './components/navigators/NavigatorDispatch';
 
 function App() {
     const [routes, setRoutes] = useState<RouteType[]>([]);
@@ -32,7 +32,7 @@ function App() {
     }, [authUser])
   return <BrowserRouter>
       <Routes>
-          <Route path='/' element={<Navigator 
+          <Route path='/' element={<NavigatorDispatch
            routes={routes}  />}>
               <Route index element={<Employees/>}/>
               <Route path='add' element={<AddEmployee/>}/>

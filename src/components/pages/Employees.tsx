@@ -49,7 +49,6 @@ export const Employees: React.FC = () => {
     const [flEdit, setFlEdit] = useState<boolean>(false);
     const [flAdd, setFlAdd] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
-
     const title = useRef<string>("");
     const content = useRef<string>("");
     const confirmFn = useRef<(isOk: boolean) => void>((isOk) => { });
