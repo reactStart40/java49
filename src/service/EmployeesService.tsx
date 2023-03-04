@@ -5,7 +5,10 @@ export function createRandomEmployee(): Employee {
     const {minId, maxId, departments,
          minBirthYear, maxBirthYear, minSalary, maxSalary} = employeeConfig;
     const id = getRandomNumber(minId, maxId,true, true);
-    const name = "name" + id.toString().slice(0,3);
+
+
+
+    const name = getRandomName()    + id.toString().slice(0,3);
     const department = getElement(departments);
     const birthDate = getRandomDate(minBirthYear, maxBirthYear).toISOString()
     .slice(0, 10);
@@ -13,6 +16,11 @@ export function createRandomEmployee(): Employee {
     const employee: Employee = {id:0, name, department,
          birthDate, salary}
     return employee;
+}
+
+function getRandomName(): string {
+    const NAMES: string[] = ['Tany', 'Gorg', 'Yury', 'Vladimir', 'Mikle', 'Bob', 'Eva', 'Alex', 'Lev'];
+    return NAMES[getRandomNumber(0, NAMES.length)];
 }
 export function statAge(employees: Employee[]):
  {minAge:number, maxAge:number, avgAge: number} {
