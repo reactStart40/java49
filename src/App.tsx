@@ -8,15 +8,17 @@ import { AddEmployee } from './components/pages/AddEmployee';
 import { AgeStatistics } from './components/pages/AgeStatistics';
 import { SalaryStatistics } from './components/pages/SalaryStatistics';
 import { useEffect, useState } from 'react';
-
 import { RouteType } from './model/RouteType';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { employeesActions } from './redux/employees-slice';
 import { Login } from './components/pages/Login';
 import { Logout } from './components/pages/Logout';
 import { Generation } from './components/pages/Generation';
 import { NavigatorDispatch } from './components/navigators/NavigatorDispatch';
 
+
 function App() {
+    const dispatch = useDispatch<any>();
     const [routes, setRoutes] = useState<RouteType[]>([]);
     const authUser:string = useSelector<any,string>(state=>state.auth.authenticated );
     useEffect(()=> {
@@ -29,10 +31,13 @@ function App() {
             (authUser && r.flAuth && !r.flAdmin))
         }
         setRoutes(getRoutes());
-    }, [authUser])
+    }, [authUser]);
+    useEffect(() => {
+        dispatch(employeesActions.getEmployees());
+    },[])
   return <BrowserRouter>
       <Routes>
-          <Route path='/' element={<NavigatorDispatch
+          <Route path='/' element={<NavigatorDispatch 
            routes={routes}  />}>
               <Route index element={<Employees/>}/>
               <Route path='add' element={<AddEmployee/>}/>
@@ -49,4 +54,3 @@ function App() {
 
 }
 export default App;
-

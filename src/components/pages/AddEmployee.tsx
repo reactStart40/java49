@@ -5,8 +5,8 @@ import { employeesActions } from '../../redux/employees-slice';
 import { createRandomEmployee } from '../../service/EmployeesService';
 import { EmployeeForm } from '../forms/EmployeeForm';
 export const AddEmployee: React.FC = () => {
-    const dispatch = useDispatch();
-    return <EmployeeForm submitFn={(employee)=>
+    const dispatch = useDispatch<any>();
+    return <EmployeeForm  submitFn={(employee) =>
      {dispatch(employeesActions.addEmployee(employee));
-    return true;}}/>
+     return true;}}/>
 }
